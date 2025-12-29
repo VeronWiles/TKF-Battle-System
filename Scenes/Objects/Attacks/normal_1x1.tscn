@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgthegvw2vhwg"]
+
+[ext_resource type="PackedScene" uid="uid://ekpn4767kwhe" path="res://Scenes/Objects/Basics/attack_tile.tscn" id="1_nepp3"]
+
+[node name="Normal 1x1" type="Node2D"]
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(45, 45)
+
+[node name="AttackTile" parent="Pivot" instance=ExtResource("1_nepp3")]
+position = Vector2(-45, -135)

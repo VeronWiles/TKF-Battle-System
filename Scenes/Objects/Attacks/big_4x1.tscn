@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://3pqofjutwdh4"]
+
+[ext_resource type="PackedScene" uid="uid://ekpn4767kwhe" path="res://Scenes/Objects/Basics/attack_tile.tscn" id="1_1gsql"]
+
+[node name="Big 4x1" type="Node2D"]
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(90, 90)
+
+[node name="AttackTile" parent="Pivot" instance=ExtResource("1_1gsql")]
+position = Vector2(-90, -180)
+
+[node name="AttackTile2" parent="Pivot" instance=ExtResource("1_1gsql")]
+position = Vector2(0, -180)
+
+[node name="AttackTile3" parent="Pivot" instance=ExtResource("1_1gsql")]
+position = Vector2(90, -180)
+
+[node name="AttackTile4" parent="Pivot" instance=ExtResource("1_1gsql")]
+position = Vector2(-180, -180)

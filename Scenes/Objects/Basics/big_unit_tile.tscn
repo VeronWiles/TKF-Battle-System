@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://oin8rb7vcdpc"]
+
+[ext_resource type="Script" uid="uid://4akqg6wuwvnp" path="res://Scripts/unit_tile.gd" id="1_4i7e1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxcw0"]
+size = Vector2(180, 180)
+
+[node name="BigUnitTile" type="Area2D"]
+z_index = 1
+script = ExtResource("1_4i7e1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 9)
+scale = Vector2(1.8, 1.8)
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(90, 90)
+shape = SubResource("RectangleShape2D_dxcw0")
+
+[connection signal="input_event" from="." to="." method="UnitTileClicked"]

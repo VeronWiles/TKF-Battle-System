@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://c4rt3bw1c1yit"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_7kkpk"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="2_hy5lk"]
+[ext_resource type="Resource" uid="uid://c4lskjjtfy5j0" path="res://Custom/Attacks/Enemies/Small Demon Attack.tres" id="2_rllbm"]
+[ext_resource type="Texture2D" uid="uid://ctb4ft2208se0" path="res://Sprites/Enemies/Small Demon.png" id="3_axtiu"]
+
+[resource]
+script = ExtResource("2_hy5lk")
+unit_name = "Small Demon"
+health = 4
+movement = 8
+picture = ExtResource("3_axtiu")
+attacks = Array[ExtResource("1_7kkpk")]([ExtResource("2_rllbm")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

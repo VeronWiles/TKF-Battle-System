@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://denhg8yl0qdhw"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_cjtsm"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="1_hipdd"]
+[ext_resource type="Texture2D" uid="uid://dwa2kmdfgfn80" path="res://Sprites/Enemies/Big Demon.png" id="1_idhuf"]
+[ext_resource type="Resource" uid="uid://bph86vyw0x8a0" path="res://Custom/Attacks/Enemies/Big Demon Attack.tres" id="2_0h01h"]
+
+[resource]
+script = ExtResource("1_hipdd")
+unit_name = "Big Demon"
+health = 12
+movement = 4
+picture = ExtResource("1_idhuf")
+is_big = true
+attacks = Array[ExtResource("1_cjtsm")]([ExtResource("2_0h01h")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

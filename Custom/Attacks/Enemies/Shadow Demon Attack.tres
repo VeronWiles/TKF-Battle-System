@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://dqmaknvy0uxpe"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_sjo7s"]
+[ext_resource type="PackedScene" uid="uid://dgthegvw2vhwg" path="res://Scenes/Objects/Attacks/normal_1x1.tscn" id="1_wvr05"]
+
+[resource]
+script = ExtResource("1_sjo7s")
+attack_name = "Shadow Demon Attack"
+pattern = ExtResource("1_wvr05")
+damages = true
+damage = -2
+bleed = -2
+bleed_length = 2
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

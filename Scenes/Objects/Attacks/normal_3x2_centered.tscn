@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ubqejv0fchp"]
+
+[ext_resource type="PackedScene" uid="uid://ekpn4767kwhe" path="res://Scenes/Objects/Basics/attack_tile.tscn" id="1_t7buv"]
+
+[node name="Normal 3x2 Centered" type="Node2D"]
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(45, 45)
+
+[node name="AttackTile" parent="Pivot" instance=ExtResource("1_t7buv")]
+position = Vector2(-45, -135)
+
+[node name="AttackTile2" parent="Pivot" instance=ExtResource("1_t7buv")]
+position = Vector2(45, -135)
+
+[node name="AttackTile3" parent="Pivot" instance=ExtResource("1_t7buv")]
+position = Vector2(-135, -135)
+
+[node name="AttackTile4" parent="Pivot" instance=ExtResource("1_t7buv")]
+position = Vector2(-135, -45)
+
+[node name="AttackTile5" parent="Pivot" instance=ExtResource("1_t7buv")]
+position = Vector2(45, -45)

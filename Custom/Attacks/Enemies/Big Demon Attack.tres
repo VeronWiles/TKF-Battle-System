@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://bph86vyw0x8a0"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_r1vbt"]
+[ext_resource type="PackedScene" uid="uid://3pqofjutwdh4" path="res://Scenes/Objects/Attacks/big_4x1.tscn" id="1_utxyl"]
+
+[resource]
+script = ExtResource("1_r1vbt")
+attack_name = "Big Demon Attack"
+pattern = ExtResource("1_utxyl")
+damages = true
+damage = -6
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

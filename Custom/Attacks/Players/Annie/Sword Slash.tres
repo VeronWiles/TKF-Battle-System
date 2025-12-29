@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://db6yhf7uqpkwp"]
+
+[ext_resource type="PackedScene" uid="uid://c2ubqejv0fchp" path="res://Scenes/Objects/Attacks/normal_3x2_centered.tscn" id="1_m7jw5"]
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_n1uut"]
+
+[resource]
+script = ExtResource("1_n1uut")
+attack_name = "Sword Slash"
+pattern = ExtResource("1_m7jw5")
+damages = true
+damage = 2
+taunt_length = 1
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

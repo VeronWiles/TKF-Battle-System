@@ -1,0 +1,211 @@
+[gd_scene load_steps=20 format=3 uid="uid://cgg0a0rr3i066"]
+
+[ext_resource type="Texture2D" uid="uid://drvys2s0iwxgw" path="res://Sprites/Background/base.png" id="1_2sssj"]
+[ext_resource type="Texture2D" uid="uid://ccucd3008iolq" path="res://Sprites/Background/Track.png" id="2_w1eww"]
+[ext_resource type="Texture2D" uid="uid://12wc70cwq0gx" path="res://Sprites/Background/XAxis.png" id="3_8l1xl"]
+[ext_resource type="Texture2D" uid="uid://d2gsm5nsgfruh" path="res://Sprites/Background/YAxis.png" id="4_8o6vf"]
+[ext_resource type="Script" uid="uid://ckqiie01cwwvy" path="res://Scripts/grid_manager.gd" id="5_yl001"]
+[ext_resource type="PackedScene" uid="uid://0a1a0lb7evf1" path="res://Scenes/Objects/Basics/place_tile.tscn" id="6_i0a74"]
+[ext_resource type="PackedScene" uid="uid://bkfut0k34fk1u" path="res://Scenes/Objects/Basics/movement_tile.tscn" id="7_h08i6"]
+[ext_resource type="PackedScene" uid="uid://b53xk4s1n1d3k" path="res://Scenes/Objects/Basics/unit_tile.tscn" id="8_36548"]
+[ext_resource type="PackedScene" uid="uid://oin8rb7vcdpc" path="res://Scenes/Objects/Basics/big_unit_tile.tscn" id="9_1v1ps"]
+[ext_resource type="PackedScene" uid="uid://dntkrjvns3wdo" path="res://Scenes/Objects/Basics/huge_unit_tile.tscn" id="10_ghti2"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="11_pvhic"]
+[ext_resource type="Resource" uid="uid://bmfpyn1rsqq8i" path="res://Custom/Units/Players/Annie.tres" id="12_qgqyk"]
+[ext_resource type="Resource" uid="uid://denhg8yl0qdhw" path="res://Custom/Units/Enemies/Big Demon.tres" id="13_g86du"]
+[ext_resource type="Resource" uid="uid://beuwubhxqdi41" path="res://Custom/Units/Enemies/Mechanical Demon.tres" id="14_nv0l5"]
+[ext_resource type="Texture2D" uid="uid://vf53wk2bw3tb" path="res://Sprites/Assets/button_bg_off.png" id="15_8l1xl"]
+[ext_resource type="Texture2D" uid="uid://dkkpf8ta3vrk0" path="res://Sprites/Assets/button_bg_on.png" id="16_8o6vf"]
+[ext_resource type="Texture2D" uid="uid://bgbn0yl0osk28" path="res://Sprites/Assets/button_bg_hover.png" id="17_8o6vf"]
+[ext_resource type="Texture2D" uid="uid://cf7rk44bman14" path="res://Sprites/Assets/image_display.png" id="18_yl001"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yl001"]
+texture = ExtResource("15_8l1xl")
+
+[node name="Sandbox" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(855, 900)
+scale = Vector2(0.8333334, 0.83333325)
+texture = ExtResource("1_2sssj")
+
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("2_w1eww")
+centered = false
+
+[node name="X" type="Sprite2D" parent="Map"]
+position = Vector2(0, 1080)
+texture = ExtResource("3_8l1xl")
+centered = false
+
+[node name="Y" type="Sprite2D" parent="Map"]
+position = Vector2(1620, 0)
+texture = ExtResource("4_8o6vf")
+centered = false
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("5_yl001")
+grid_x_limit = 18
+grid_y_limit = 12
+place_prefab = ExtResource("6_i0a74")
+movement_prefab = ExtResource("7_h08i6")
+unit_prefab = ExtResource("8_36548")
+big_unit_prefab = ExtResource("9_1v1ps")
+huge_unit_prefab = ExtResource("10_ghti2")
+player_units_list = Array[ExtResource("11_pvhic")]([ExtResource("12_qgqyk")])
+enemy_units_list = Array[ExtResource("11_pvhic")]([ExtResource("13_g86du"), ExtResource("14_nv0l5")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-745, 0)
+anchor_mode = 0
+zoom = Vector2(0.6, 0.6)
+
+[node name="Battle Menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -745.0
+offset_top = 1170.0
+offset_right = 2455.0
+offset_bottom = 1800.0
+mouse_filter = 1
+
+[node name="Place Mode" type="TextureButton" parent="Battle Menu"]
+layout_mode = 1
+offset_right = 637.0
+offset_bottom = 111.0
+mouse_filter = 1
+texture_normal = ExtResource("15_8l1xl")
+texture_pressed = ExtResource("16_8o6vf")
+texture_hover = ExtResource("17_8o6vf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Battle Menu/Place Mode"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+text = "Enter Play Mode"
+
+[node name="Movement Toggle" type="Button" parent="Battle Menu"]
+layout_mode = 0
+offset_top = 121.0
+offset_right = 637.0
+offset_bottom = 232.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+text = "Toggle Movement"
+
+[node name="Reset Movement" type="Button" parent="Battle Menu"]
+layout_mode = 0
+offset_top = 242.0
+offset_right = 637.0
+offset_bottom = 353.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+text = "Reset Movement"
+
+[node name="Attack Select" type="OptionButton" parent="Battle Menu"]
+visible = false
+layout_mode = 0
+offset_top = 363.0
+offset_right = 720.0
+offset_bottom = 474.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+fit_to_longest_item = false
+
+[node name="Place Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -745.0
+offset_top = 1170.0
+offset_right = 2455.0
+offset_bottom = 1800.0
+mouse_filter = 1
+
+[node name="Exit" type="Button" parent="Place Menu"]
+layout_mode = 1
+offset_right = 311.0
+offset_bottom = 63.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+text = "Exit Place Mode"
+
+[node name="Delete Toggle" type="Button" parent="Place Menu"]
+layout_mode = 1
+offset_top = 121.0
+offset_right = 723.0
+offset_bottom = 232.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+text = "Toggle Delete Mode"
+
+[node name="Unit Select" type="OptionButton" parent="Place Menu"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 242.0
+offset_right = 831.0
+offset_bottom = 353.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_yl001")
+fit_to_longest_item = false
+
+[node name="Unit Picture Select" type="TextureRect" parent="Place Menu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 250.0
+offset_right = 103.0
+offset_bottom = 345.0
+expand_mode = 1
+
+[node name="Unit Picture FG" type="TextureRect" parent="Place Menu"]
+z_index = 1
+layout_mode = 0
+offset_top = 242.0
+offset_right = 111.0
+offset_bottom = 353.0
+texture = ExtResource("18_yl001")
+expand_mode = 1
+
+[node name="Switch Unit Type" type="Button" parent="Place Menu"]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 242.0
+offset_right = 947.0
+offset_bottom = 319.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 24
+text = "Toggle 
+Player/Enemy 
+Units"
+
+[node name="Player Information" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -745.0
+offset_bottom = 1170.0
+
+[node name="Enemy Information" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1710.0
+offset_right = 2455.0
+offset_bottom = 1170.0
+
+[connection signal="pressed" from="Battle Menu/Place Mode" to="Grid" method="StartPlaceMode"]
+[connection signal="toggled" from="Battle Menu/Movement Toggle" to="Grid" method="ToggleDeletePlaceMode"]
+[connection signal="pressed" from="Battle Menu/Reset Movement" to="Grid" method="ResetMovement"]
+[connection signal="pressed" from="Place Menu/Exit" to="Grid" method="EndPlaceMode"]
+[connection signal="pressed" from="Place Menu/Delete Toggle" to="Grid" method="ToggleDeletePlaceMode"]
+[connection signal="item_selected" from="Place Menu/Unit Select" to="Grid" method="UpdateUnitSelect"]
+[connection signal="pressed" from="Place Menu/Switch Unit Type" to="Grid" method="SwitchUnitType"]

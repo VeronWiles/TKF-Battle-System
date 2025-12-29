@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://d4d3lilqmfjar"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_vi773"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="2_5mmd3"]
+[ext_resource type="Resource" uid="uid://cinv3yt7lq5ht" path="res://Custom/Attacks/Enemies/Shield Demon Activation.tres" id="2_ryxgu"]
+[ext_resource type="Texture2D" uid="uid://dt6ga3mxxgdek" path="res://Sprites/Enemies/Shield Demon.png" id="2_xxowt"]
+
+[resource]
+script = ExtResource("2_5mmd3")
+unit_name = "Shield Demon"
+health = 5
+movement = 8
+picture = ExtResource("2_xxowt")
+attacks = Array[ExtResource("1_vi773")]([ExtResource("2_ryxgu")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

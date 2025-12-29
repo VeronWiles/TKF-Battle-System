@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=6 format=3 uid="uid://bmfpyn1rsqq8i"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_68jpe"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="1_dshp0"]
+[ext_resource type="Texture2D" uid="uid://b5h1iwyxj0rin" path="res://Sprites/Players/Annie_Reveal.png" id="1_geess"]
+[ext_resource type="Resource" uid="uid://db6yhf7uqpkwp" path="res://Custom/Attacks/Players/Annie/Sword Slash.tres" id="2_tde40"]
+[ext_resource type="Resource" uid="uid://3sq2cle5q27w" path="res://Custom/Attacks/Players/Annie/Shield Bash.tres" id="3_5uf0h"]
+
+[resource]
+script = ExtResource("1_dshp0")
+unit_name = "Annie Meadows"
+health = 11
+movement = 7
+picture = ExtResource("1_geess")
+player = true
+attacks = Array[ExtResource("1_68jpe")]([ExtResource("2_tde40"), ExtResource("3_5uf0h")])
+Gimmick = 1
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

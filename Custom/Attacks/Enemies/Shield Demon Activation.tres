@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://cinv3yt7lq5ht"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_rrqyo"]
+[ext_resource type="PackedScene" uid="uid://cbeklwpf5upk" path="res://Scenes/Objects/Attacks/normal_3x3_centered.tscn" id="1_ww85b"]
+
+[resource]
+script = ExtResource("1_rrqyo")
+attack_name = "Shield Demon Activate"
+pattern = ExtResource("1_ww85b")
+heals = true
+shield = 4
+shield_length = 1
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

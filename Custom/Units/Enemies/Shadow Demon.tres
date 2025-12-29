@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://dwfmr5hypi3w2"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_2nhni"]
+[ext_resource type="Texture2D" uid="uid://dqv2jreo4556t" path="res://Sprites/Enemies/ShadowDemon.png" id="2_8usty"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="2_dnw67"]
+[ext_resource type="Resource" uid="uid://dqmaknvy0uxpe" path="res://Custom/Attacks/Enemies/Shadow Demon Attack.tres" id="2_wv7og"]
+
+[resource]
+script = ExtResource("2_dnw67")
+unit_name = "Shadow Demon"
+health = 1
+movement = 12
+picture = ExtResource("2_8usty")
+attacks = Array[ExtResource("1_2nhni")]([ExtResource("2_wv7og")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

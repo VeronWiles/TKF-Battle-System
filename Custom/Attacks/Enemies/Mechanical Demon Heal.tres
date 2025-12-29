@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://1hgjp1gw3eb6"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_vqw4l"]
+[ext_resource type="PackedScene" uid="uid://bvljkl5x3txbi" path="res://Scenes/Objects/Attacks/huge_5x5_centered.tscn" id="1_wpn1j"]
+
+[resource]
+script = ExtResource("1_vqw4l")
+attack_name = "Mechanical Demon Heal"
+pattern = ExtResource("1_wpn1j")
+heals = true
+heal = 3
+movement_buff = 2
+movement_buff_length = 1
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

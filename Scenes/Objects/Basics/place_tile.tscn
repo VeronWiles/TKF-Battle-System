@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://0a1a0lb7evf1"]
+
+[ext_resource type="Script" uid="uid://1xcps5ng8f3y" path="res://Scripts/place_tile.gd" id="1_8cta4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwbxm"]
+size = Vector2(90, 90)
+
+[node name="PlaceTile" type="Area2D"]
+z_index = 10
+script = ExtResource("1_8cta4")
+base_color = Color(1, 1, 1, 0.47058824)
+unselectable_color = Color(0, 0, 0, 0.47058824)
+delete_color = Color(1, 0, 0, 0.47058824)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 90.0
+offset_bottom = 90.0
+mouse_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(45, 45)
+shape = SubResource("RectangleShape2D_dwbxm")
+
+[connection signal="input_event" from="." to="." method="PlaceTileClicked"]

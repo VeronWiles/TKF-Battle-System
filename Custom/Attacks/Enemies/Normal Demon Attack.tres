@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://cbq2c1bwlcus3"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_maex8"]
+[ext_resource type="PackedScene" uid="uid://dgthegvw2vhwg" path="res://Scenes/Objects/Attacks/normal_1x1.tscn" id="1_rrdfh"]
+
+[resource]
+script = ExtResource("1_maex8")
+attack_name = "Normal Demon Attack"
+pattern = ExtResource("1_rrdfh")
+damage = -4
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

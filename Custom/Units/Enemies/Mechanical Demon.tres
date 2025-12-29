@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=6 format=3 uid="uid://beuwubhxqdi41"]
+
+[ext_resource type="Texture2D" uid="uid://bu2kdg62vwol8" path="res://Sprites/Enemies/MechanicalDemon.png" id="1_boev0"]
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_ny1wg"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="1_qovs7"]
+[ext_resource type="Resource" uid="uid://1hgjp1gw3eb6" path="res://Custom/Attacks/Enemies/Mechanical Demon Heal.tres" id="2_46uas"]
+[ext_resource type="Resource" uid="uid://c7sefdilm7tob" path="res://Custom/Attacks/Enemies/Mechanical Demon Stab.tres" id="3_0j6yi"]
+
+[resource]
+script = ExtResource("1_qovs7")
+unit_name = "Mechanical Demon"
+health = 15
+movement = 4
+picture = ExtResource("1_boev0")
+is_huge = true
+attacks = Array[ExtResource("1_ny1wg")]([ExtResource("2_46uas"), ExtResource("3_0j6yi")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

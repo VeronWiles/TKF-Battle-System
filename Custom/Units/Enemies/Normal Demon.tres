@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://bguwax2fri6kw"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_kcvbt"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="2_67iue"]
+[ext_resource type="Resource" uid="uid://cbq2c1bwlcus3" path="res://Custom/Attacks/Enemies/Normal Demon Attack.tres" id="2_cv4aq"]
+[ext_resource type="Texture2D" uid="uid://cfmm2ycxpu3x1" path="res://Sprites/Enemies/Normal Demon.png" id="2_oe38y"]
+
+[resource]
+script = ExtResource("2_67iue")
+unit_name = "Normal Demon"
+health = 6
+movement = 6
+picture = ExtResource("2_oe38y")
+attacks = Array[ExtResource("1_kcvbt")]([ExtResource("2_cv4aq")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

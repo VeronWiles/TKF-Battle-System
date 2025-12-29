@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://3sq2cle5q27w"]
+
+[ext_resource type="PackedScene" uid="uid://ddxikgro5dt5m" path="res://Scenes/Objects/Attacks/normal_3x2_self.tscn" id="1_bb26f"]
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="2_x0b4w"]
+
+[resource]
+script = ExtResource("2_x0b4w")
+attack_name = "Shield Bash"
+pattern = ExtResource("1_bb26f")
+damages = true
+affects_self = true
+damage = 4
+shield = 5
+shield_length = 1
+metadata/_custom_type_script = "uid://dy7pk120sv0le"
