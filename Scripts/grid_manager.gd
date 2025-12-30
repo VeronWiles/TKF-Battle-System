@@ -32,6 +32,8 @@ var original_bonus_movement: int
 var rot: int = 0
 var spawn_attack
 var attack_tiles: Array[Area2D]
+var annie_list: Dictionary = {"Healing Vial":5, "Portable Shield":5, "Spring Trap":3, "Special Refresher":1}
+var annie_list_used: Dictionary = {"Healing Vial":0, "Portable Shield":0, "Spring Trap":0, "Special Refresher":0}
 
 func _process(_delta):
 	if movement_mode:
@@ -353,10 +355,11 @@ func ShowAttack():
 			attack_tiles.append(tile)
 
 func RotateAttack():
-	rot += 1
-	if rot >= 4:
-		rot = 0
-	spawn_attack.find_child("Pivot").rotation = deg_to_rad(rot*90)
+	if spawn_attack:
+		rot += 1
+		if rot >= 4:
+			rot = 0
+		spawn_attack.find_child("Pivot").rotation = deg_to_rad(rot*90)
 
 func UseAttack():
 	if spawn_attack:
@@ -647,12 +650,16 @@ func SwitchUnitType():
 
 # Gimmicks
 ## Gimmicks Setup
+
+func ResetGimmicks():
+	get_parent().find_child("Battle Menu").find_child("Annie Options").visible = false
+
 func SetGimmick(gim: GimmicksList):
 	match gim:
 		GimmicksList.NONE:
 			pass
 		GimmicksList.ANNIE:
-			pass
+			get_parent().find_child("Battle Menu").find_child("Annie Options").visible = true
 
 ## Gimmicks Enum
 enum GimmicksList {
