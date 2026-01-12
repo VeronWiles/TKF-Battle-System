@@ -8,5 +8,5 @@ script = ExtResource("1_xqbto")
 attack_name = "Small Demon Attack"
 pattern = ExtResource("1_x0o8s")
 damages = true
-damage = 2
+damage = -2
 metadata/_custom_type_script = "uid://dy7pk120sv0le"

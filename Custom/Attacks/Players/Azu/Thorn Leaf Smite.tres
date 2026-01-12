@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://jcnuq18sofv5"]
+
+[ext_resource type="PackedScene" uid="uid://dgthegvw2vhwg" path="res://Scenes/Objects/Attacks/normal_1x1.tscn" id="1_kx7nd"]
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_lpl1q"]
+
+[resource]
+script = ExtResource("1_lpl1q")
+attack_name = "Thorn Leaf Smite"
+pattern = ExtResource("1_kx7nd")
+damages = true
+damage = -4
+bleed = -2
+bleed_length = 3
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

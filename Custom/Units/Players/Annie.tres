@@ -14,5 +14,5 @@ movement = 7
 picture = ExtResource("1_geess")
 player = true
 attacks = Array[ExtResource("1_68jpe")]([ExtResource("2_tde40"), ExtResource("3_5uf0h")])
-Gimmick = 1
+gimmick = 1
 metadata/_custom_type_script = "uid://ccyu10lpdotsu"

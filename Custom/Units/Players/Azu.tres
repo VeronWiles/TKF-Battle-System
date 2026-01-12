@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=7 format=3 uid="uid://dbn14voqkbb62"]
+
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_ipdry"]
+[ext_resource type="Texture2D" uid="uid://bu475kh37s68" path="res://Sprites/Players/Azu_Reveal.png" id="2_3wnke"]
+[ext_resource type="Resource" uid="uid://jcnuq18sofv5" path="res://Custom/Attacks/Players/Azu/Thorn Leaf Smite.tres" id="2_8ngsj"]
+[ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="2_bu543"]
+[ext_resource type="Resource" uid="uid://bx30jqoa5rr4g" path="res://Custom/Attacks/Players/Azu/Flower Riot Strike.tres" id="3_agsuu"]
+[ext_resource type="Resource" uid="uid://ctwy714q03l45" path="res://Custom/Attacks/Players/Azu/Vanquishing Blade.tres" id="4_5dr36"]
+
+[resource]
+script = ExtResource("2_bu543")
+unit_name = "Azu Kusanagi"
+health = 9
+movement = 10
+picture = ExtResource("2_3wnke")
+player = true
+attacks = Array[ExtResource("1_ipdry")]([ExtResource("2_8ngsj"), ExtResource("3_agsuu"), ExtResource("4_5dr36")])
+metadata/_custom_type_script = "uid://ccyu10lpdotsu"

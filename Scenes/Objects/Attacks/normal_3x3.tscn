@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx4kcmjyocain"]
+
+[ext_resource type="PackedScene" uid="uid://ekpn4767kwhe" path="res://Scenes/Objects/Basics/attack_tile.tscn" id="1_vkkp6"]
+
+[node name="Normal 3x3" type="Node2D"]
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(45, 45)
+
+[node name="AttackTile" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(-45, -135)
+
+[node name="AttackTile2" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(-45, -225)
+
+[node name="AttackTile3" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(-45, -315)
+
+[node name="AttackTile4" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(-135, -135)
+
+[node name="AttackTile5" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(-135, -225)
+
+[node name="AttackTile6" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(-135, -315)
+
+[node name="AttackTile7" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(45, -135)
+
+[node name="AttackTile8" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(45, -225)
+
+[node name="AttackTile9" parent="Pivot" instance=ExtResource("1_vkkp6")]
+position = Vector2(45, -315)

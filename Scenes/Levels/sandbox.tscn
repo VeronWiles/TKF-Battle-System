@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cgg0a0rr3i066"]
+[gd_scene load_steps=29 format=3 uid="uid://cgg0a0rr3i066"]
 
 [ext_resource type="Texture2D" uid="uid://drvys2s0iwxgw" path="res://Sprites/Background/base.png" id="1_2sssj"]
 [ext_resource type="Texture2D" uid="uid://ccucd3008iolq" path="res://Sprites/Background/Track.png" id="2_w1eww"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ccyu10lpdotsu" path="res://Scripts/Unit.gd" id="11_pvhic"]
 [ext_resource type="Resource" uid="uid://bmfpyn1rsqq8i" path="res://Custom/Units/Players/Annie.tres" id="12_qgqyk"]
 [ext_resource type="Resource" uid="uid://denhg8yl0qdhw" path="res://Custom/Units/Enemies/Big Demon.tres" id="13_g86du"]
+[ext_resource type="Resource" uid="uid://dbn14voqkbb62" path="res://Custom/Units/Players/Azu.tres" id="13_pvhic"]
 [ext_resource type="Resource" uid="uid://dwfmr5hypi3w2" path="res://Custom/Units/Enemies/Shadow Demon.tres" id="14_ghti2"]
 [ext_resource type="Resource" uid="uid://beuwubhxqdi41" path="res://Custom/Units/Enemies/Mechanical Demon.tres" id="14_nv0l5"]
 [ext_resource type="Texture2D" uid="uid://vf53wk2bw3tb" path="res://Sprites/Assets/button_bg_off.png" id="15_8l1xl"]
@@ -67,15 +68,18 @@ movement_prefab = ExtResource("7_h08i6")
 unit_prefab = ExtResource("8_36548")
 big_unit_prefab = ExtResource("9_1v1ps")
 huge_unit_prefab = ExtResource("10_ghti2")
-player_units_list = Array[ExtResource("11_pvhic")]([ExtResource("12_qgqyk")])
+player_units_list = Array[ExtResource("11_pvhic")]([ExtResource("12_qgqyk"), ExtResource("13_pvhic")])
 enemy_units_list = Array[ExtResource("11_pvhic")]([ExtResource("15_h08i6"), ExtResource("14_ghti2"), ExtResource("15_pvhic"), ExtResource("16_qgqyk"), ExtResource("13_g86du"), ExtResource("14_nv0l5")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-745, 0)
 anchor_mode = 0
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.36, 0.36)
 
-[node name="Battle Menu" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Battle Menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -745.0
@@ -84,7 +88,7 @@ offset_right = 2455.0
 offset_bottom = 1800.0
 mouse_filter = 1
 
-[node name="Place Mode" type="TextureButton" parent="Battle Menu"]
+[node name="Place Mode" type="TextureButton" parent="CanvasLayer/Battle Menu"]
 layout_mode = 1
 offset_right = 637.0
 offset_bottom = 111.0
@@ -95,7 +99,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Place Mode"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Place Mode"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +115,7 @@ text = "Enter Place Mode"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Movement Toggle" type="TextureButton" parent="Battle Menu"]
+[node name="Movement Toggle" type="TextureButton" parent="CanvasLayer/Battle Menu"]
 layout_mode = 0
 offset_top = 121.0
 offset_right = 654.0
@@ -124,7 +128,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Movement Toggle"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Movement Toggle"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +144,7 @@ text = "Toggle Movement"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reset Movement" type="TextureButton" parent="Battle Menu"]
+[node name="Reset Movement" type="TextureButton" parent="CanvasLayer/Battle Menu"]
 layout_mode = 0
 offset_top = 242.0
 offset_right = 637.0
@@ -152,7 +156,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Reset Movement"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Reset Movement"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,7 +172,8 @@ text = "Reset Movement"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Attack Options" type="Control" parent="Battle Menu"]
+[node name="Attack Options" type="Control" parent="CanvasLayer/Battle Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,7 +185,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Attack Select" type="OptionButton" parent="Battle Menu/Attack Options"]
+[node name="Attack Select" type="OptionButton" parent="CanvasLayer/Battle Menu/Attack Options"]
 layout_mode = 0
 offset_top = 110.0
 offset_right = 720.0
@@ -193,7 +198,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_36548")
 alignment = 1
 fit_to_longest_item = false
 
-[node name="Spawn Attack" type="TextureButton" parent="Battle Menu/Attack Options"]
+[node name="Spawn Attack" type="TextureButton" parent="CanvasLayer/Battle Menu/Attack Options"]
 layout_mode = 0
 offset_right = 168.0
 offset_bottom = 110.0
@@ -204,7 +209,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Attack Options/Spawn Attack"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Attack Options/Spawn Attack"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,7 +224,7 @@ text = "Spawn Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Rotate Attack" type="TextureButton" parent="Battle Menu/Attack Options"]
+[node name="Rotate Attack" type="TextureButton" parent="CanvasLayer/Battle Menu/Attack Options"]
 layout_mode = 0
 offset_left = 168.0
 offset_right = 336.0
@@ -231,7 +236,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Attack Options/Rotate Attack"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Attack Options/Rotate Attack"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +251,7 @@ text = "Rotate Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cancel Attack" type="TextureButton" parent="Battle Menu/Attack Options"]
+[node name="Cancel Attack" type="TextureButton" parent="CanvasLayer/Battle Menu/Attack Options"]
 layout_mode = 0
 offset_left = 336.0
 offset_right = 504.0
@@ -258,7 +263,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Attack Options/Cancel Attack"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Attack Options/Cancel Attack"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,7 +278,7 @@ text = "Cancel Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start Attack" type="TextureButton" parent="Battle Menu/Attack Options"]
+[node name="Start Attack" type="TextureButton" parent="CanvasLayer/Battle Menu/Attack Options"]
 layout_mode = 0
 offset_left = 552.0
 offset_right = 720.0
@@ -285,7 +290,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Battle Menu/Attack Options/Start Attack"]
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Attack Options/Start Attack"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,7 +305,8 @@ text = "Start Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Annie Options" type="Control" parent="Battle Menu"]
+[node name="Annie Options" type="Control" parent="CanvasLayer/Battle Menu"]
+visible = false
 anchors_preset = 0
 offset_left = 664.0
 offset_top = 231.0
@@ -308,7 +314,105 @@ offset_right = 1392.0
 offset_bottom = 630.0
 mouse_filter = 1
 
-[node name="Place Menu" type="Control" parent="."]
+[node name="Annie Items" type="OptionButton" parent="CanvasLayer/Battle Menu/Annie Options"]
+layout_mode = 0
+offset_left = 111.0
+offset_right = 728.0
+offset_bottom = 111.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("18_i0a74")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxTexture_h08i6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_36548")
+alignment = 1
+fit_to_longest_item = false
+
+[node name="Items Remaining" type="Label" parent="CanvasLayer/Battle Menu/Annie Options"]
+layout_mode = 1
+offset_right = 111.0
+offset_bottom = 111.0
+mouse_filter = 1
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("18_i0a74")
+theme_override_font_sizes/font_size = 65
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item Target" type="OptionButton" parent="CanvasLayer/Battle Menu/Annie Options"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 121.0
+offset_right = 728.0
+offset_bottom = 232.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("18_i0a74")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxTexture_h08i6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_36548")
+alignment = 1
+fit_to_longest_item = false
+
+[node name="Use Item" type="TextureButton" parent="CanvasLayer/Battle Menu/Annie Options"]
+layout_mode = 0
+offset_top = 121.0
+offset_right = 111.0
+offset_bottom = 232.0
+mouse_filter = 1
+texture_normal = ExtResource("15_8l1xl")
+texture_pressed = ExtResource("16_8o6vf")
+texture_hover = ExtResource("17_8o6vf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Battle Menu/Annie Options/Use Item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("18_i0a74")
+theme_override_font_sizes/font_size = 45
+text = "Use
+Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="X List" type="OptionButton" parent="CanvasLayer/Battle Menu/Annie Options"]
+visible = false
+layout_mode = 0
+offset_left = 111.0
+offset_top = 241.0
+offset_right = 333.0
+offset_bottom = 352.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("18_i0a74")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxTexture_h08i6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_36548")
+alignment = 1
+fit_to_longest_item = false
+
+[node name="Y List" type="OptionButton" parent="CanvasLayer/Battle Menu/Annie Options"]
+visible = false
+layout_mode = 0
+offset_left = 506.0
+offset_top = 241.0
+offset_right = 728.0
+offset_bottom = 352.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("18_i0a74")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxTexture_h08i6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_36548")
+alignment = 1
+fit_to_longest_item = false
+
+[node name="Place Menu" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -318,7 +422,7 @@ offset_right = 2455.0
 offset_bottom = 1800.0
 mouse_filter = 1
 
-[node name="Exit" type="TextureButton" parent="Place Menu"]
+[node name="Exit" type="TextureButton" parent="CanvasLayer/Place Menu"]
 layout_mode = 1
 offset_right = 576.0
 offset_bottom = 111.0
@@ -329,7 +433,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Place Menu/Exit"]
+[node name="Label" type="Label" parent="CanvasLayer/Place Menu/Exit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -345,7 +449,7 @@ text = "Exit Place Mode"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Delete Toggle" type="TextureButton" parent="Place Menu"]
+[node name="Delete Toggle" type="TextureButton" parent="CanvasLayer/Place Menu"]
 layout_mode = 1
 offset_top = 121.0
 offset_right = 723.0
@@ -358,7 +462,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Place Menu/Delete Toggle"]
+[node name="Label" type="Label" parent="CanvasLayer/Place Menu/Delete Toggle"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -374,7 +478,7 @@ text = "Toggle Delete Mode"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Unit Select" type="OptionButton" parent="Place Menu"]
+[node name="Unit Select" type="OptionButton" parent="CanvasLayer/Place Menu"]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 242.0
@@ -388,7 +492,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_i0a74")
 alignment = 1
 fit_to_longest_item = false
 
-[node name="Unit Picture Select" type="TextureRect" parent="Place Menu"]
+[node name="Unit Picture Select" type="TextureRect" parent="CanvasLayer/Place Menu"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 250.0
@@ -396,7 +500,7 @@ offset_right = 103.0
 offset_bottom = 345.0
 expand_mode = 1
 
-[node name="Unit Picture FG" type="TextureRect" parent="Place Menu"]
+[node name="Unit Picture FG" type="TextureRect" parent="CanvasLayer/Place Menu"]
 z_index = 1
 layout_mode = 0
 offset_top = 242.0
@@ -405,7 +509,7 @@ offset_bottom = 353.0
 texture = ExtResource("18_yl001")
 expand_mode = 1
 
-[node name="Switch Unit Type" type="TextureButton" parent="Place Menu"]
+[node name="Switch Unit Type" type="TextureButton" parent="CanvasLayer/Place Menu"]
 layout_mode = 0
 offset_left = 832.0
 offset_top = 242.0
@@ -418,7 +522,7 @@ texture_hover = ExtResource("17_8o6vf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Place Menu/Switch Unit Type"]
+[node name="Label" type="Label" parent="CanvasLayer/Place Menu/Switch Unit Type"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -435,28 +539,30 @@ Units"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player Information" type="Control" parent="."]
+[node name="Player Information" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -745.0
 offset_bottom = 1170.0
 
-[node name="Enemy Information" type="Control" parent="."]
+[node name="Enemy Information" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1710.0
 offset_right = 2455.0
 offset_bottom = 1170.0
 
-[connection signal="pressed" from="Battle Menu/Place Mode" to="Grid" method="StartPlaceMode"]
-[connection signal="toggled" from="Battle Menu/Movement Toggle" to="Grid" method="ToggleMovementMode"]
-[connection signal="pressed" from="Battle Menu/Reset Movement" to="Grid" method="ResetMovement"]
-[connection signal="item_selected" from="Battle Menu/Attack Options/Attack Select" to="Grid" method="UpdateAttackSelect"]
-[connection signal="pressed" from="Battle Menu/Attack Options/Spawn Attack" to="Grid" method="ShowAttack"]
-[connection signal="pressed" from="Battle Menu/Attack Options/Rotate Attack" to="Grid" method="RotateAttack"]
-[connection signal="pressed" from="Battle Menu/Attack Options/Cancel Attack" to="Grid" method="CancelAttack"]
-[connection signal="pressed" from="Battle Menu/Attack Options/Start Attack" to="Grid" method="UseAttack"]
-[connection signal="pressed" from="Place Menu/Exit" to="Grid" method="EndPlaceMode"]
-[connection signal="toggled" from="Place Menu/Delete Toggle" to="Grid" method="ToggleDeletePlaceMode"]
-[connection signal="item_selected" from="Place Menu/Unit Select" to="Grid" method="UpdateUnitSelect"]
-[connection signal="pressed" from="Place Menu/Switch Unit Type" to="Grid" method="SwitchUnitType"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Place Mode" to="Grid" method="StartPlaceMode"]
+[connection signal="toggled" from="CanvasLayer/Battle Menu/Movement Toggle" to="Grid" method="ToggleMovementMode"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Reset Movement" to="Grid" method="ResetMovement"]
+[connection signal="item_selected" from="CanvasLayer/Battle Menu/Attack Options/Attack Select" to="Grid" method="UpdateAttackSelect"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Attack Options/Spawn Attack" to="Grid" method="ShowAttack"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Attack Options/Rotate Attack" to="Grid" method="RotateAttack"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Attack Options/Cancel Attack" to="Grid" method="CancelAttack"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Attack Options/Start Attack" to="Grid" method="UseAttack"]
+[connection signal="item_selected" from="CanvasLayer/Battle Menu/Annie Options/Annie Items" to="Grid" method="AnnieGimmickList"]
+[connection signal="pressed" from="CanvasLayer/Battle Menu/Annie Options/Use Item" to="Grid" method="AnnieGimmickUse"]
+[connection signal="pressed" from="CanvasLayer/Place Menu/Exit" to="Grid" method="EndPlaceMode"]
+[connection signal="toggled" from="CanvasLayer/Place Menu/Delete Toggle" to="Grid" method="ToggleDeletePlaceMode"]
+[connection signal="item_selected" from="CanvasLayer/Place Menu/Unit Select" to="Grid" method="UpdateUnitSelect"]
+[connection signal="pressed" from="CanvasLayer/Place Menu/Switch Unit Type" to="Grid" method="SwitchUnitType"]

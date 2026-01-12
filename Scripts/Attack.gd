@@ -7,6 +7,7 @@ extends Resource
 @export var damages: bool
 @export var heals: bool
 @export var affects_self: bool
+@export var is_special: bool
 
 @export_category("Damaging")
 @export var damage: int
@@ -29,3 +30,6 @@ extends Resource
 @export var attack_buff_length: int
 @export var shield: int
 @export var shield_length: int
+
+@export_category("Other")
+@export var displacement: int

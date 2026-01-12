@@ -11,4 +11,4 @@ extends Resource
 @export var player: bool
 @export var attacks_count: int = 1
 @export var attacks: Array[Attack]
-@export var Gimmick: Grid.GimmicksList
+@export var gimmick: Grid.GimmicksList

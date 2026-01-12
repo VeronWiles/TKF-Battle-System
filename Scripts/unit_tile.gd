@@ -40,6 +40,7 @@ func NewRound():
 		attacks_left = 0
 		movement_left = 0
 	else:
+		CheckAzu()
 		attacks_left = stats.attacks_count
 		movement_left = stats.movement
 	
@@ -80,7 +81,6 @@ func NewRound():
 		stun_length -= 1
 		if stun_length == 0:
 			stun = false
-			
 	
 
 func UnitTileClicked(_viewport, event, _shape_idx):
@@ -89,3 +89,12 @@ func UnitTileClicked(_viewport, event, _shape_idx):
 			grid.SetCurrentUnit(self)
 		if grid.movement_mode && !stun:
 			grid.ToggleMovementMode(false)
+
+func CheckAzu():
+	if stats.gimmick == Grid.GimmicksList.AZU:
+		if movement_left == stats.movement:
+			grid.azu_move = false
+			grid.ChangeMovementStat(5, 1, self)
+		else:
+			grid.azu_move = true
+			grid.ChangeMovementStat(0, 0, self)

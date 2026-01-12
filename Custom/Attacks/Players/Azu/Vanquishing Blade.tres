@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://ctwy714q03l45"]
+
+[ext_resource type="PackedScene" uid="uid://cfnov3vqmbknr" path="res://Scenes/Objects/Attacks/normal_1x4_azu.tscn" id="1_so21s"]
+[ext_resource type="Script" uid="uid://dy7pk120sv0le" path="res://Scripts/Attack.gd" id="1_wuphm"]
+
+[resource]
+script = ExtResource("1_wuphm")
+attack_name = "Vanquishing Blade - Blossoming Riot Dance"
+pattern = ExtResource("1_so21s")
+damages = true
+affects_self = true
+damage = -4
+bleed = -2
+bleed_length = 4
+displacement = 1
+metadata/_custom_type_script = "uid://dy7pk120sv0le"

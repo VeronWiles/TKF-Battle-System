@@ -34,6 +34,7 @@ var spawn_attack
 var attack_tiles: Array[Area2D]
 var annie_list: Dictionary = {"Healing Vial":5, "Portable Shield":5, "Spring Trap":3, "Special Refresher":1}
 var annie_list_used: Dictionary = {"Healing Vial":0, "Portable Shield":0, "Spring Trap":0, "Special Refresher":0}
+var azu_move: bool = true
 
 func _process(_delta):
 	if movement_mode:
@@ -352,7 +353,8 @@ func ShowAttack():
 		spawn_attack.find_child("Pivot").rotation = rot*90
 		add_child(spawn_attack)
 		for tile in spawn_attack.find_child("Pivot").get_children():
-			attack_tiles.append(tile)
+			if tile.name != "Unit Tile":
+				attack_tiles.append(tile)
 
 func RotateAttack():
 	if spawn_attack:
@@ -397,7 +399,7 @@ func UseAttack():
 					if selected_attack.brainwash_length > 0:
 						SetStun(selected_attack.brainwash_length, at.overlapped_unit)
 				if select_move_unit.stats.player && at.overlapped_unit.stats.player && selected_attack.affects_self && at.overlapped_unit == select_move_unit:
-					print("Affected ", at.overlapped_unit.stats.unit_name)
+					print("Affected Self")
 					if selected_attack.heal > 0:
 						ChangeCurrentHealthStat(selected_attack.heal, at.overlapped_unit)
 					if selected_attack.movement_buff_length > 0:
@@ -406,6 +408,16 @@ func UseAttack():
 						ChangeAttackStat(selected_attack.attack_buff, selected_attack.attack_buff_length, at.overlapped_unit)
 					if selected_attack.shield_length > 0:
 						ChangeAttackStat(selected_attack.shield, selected_attack.shield_length, at.overlapped_unit)
+					if selected_attack.displacement > 0:
+						match rot:
+							0:
+								ChangeUnitPosition(select_move_unit.position.x / GRID_SQUARE_SIZE, (select_move_unit.position.y - (GRID_SQUARE_SIZE*selected_attack.displacement)) / GRID_SQUARE_SIZE, select_move_unit)
+							1:
+								ChangeUnitPosition((select_move_unit.position.x + (GRID_SQUARE_SIZE*selected_attack.displacement)) / GRID_SQUARE_SIZE, select_move_unit.position.y / GRID_SQUARE_SIZE, select_move_unit)
+							2:
+								ChangeUnitPosition(select_move_unit.position.x / GRID_SQUARE_SIZE, (select_move_unit.position.y + (GRID_SQUARE_SIZE*selected_attack.displacement)) / GRID_SQUARE_SIZE, select_move_unit)
+							3:
+								ChangeUnitPosition((select_move_unit.position.x - (GRID_SQUARE_SIZE*selected_attack.displacement)) / GRID_SQUARE_SIZE, select_move_unit.position.y / GRID_SQUARE_SIZE, select_move_unit)
 
 				if !select_move_unit.stats.player && at.overlapped_unit.stats.player && selected_attack.damages:
 					print("Affected ", at.overlapped_unit.stats.unit_name)
@@ -464,6 +476,7 @@ func SetCurrentUnit(u: UnitTile):
 	CancelAttack()
 	ListAttacks()
 	UpdateAttackSelect(0)
+	SetGimmick(select_move_unit.stats.gimmick)
 
 # Place Menu
 ## UI Management
@@ -653,16 +666,83 @@ func SwitchUnitType():
 
 func ResetGimmicks():
 	get_parent().find_child("Battle Menu").find_child("Annie Options").visible = false
+	get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("X List").visible = false
+	get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Y List").visible = false
+	get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Item Target").clear()
+	
+	get_parent().find_child("Battle Menu").find_child("Hikari Aiming").visible = false
 
 func SetGimmick(gim: GimmicksList):
 	match gim:
-		GimmicksList.NONE:
-			pass
 		GimmicksList.ANNIE:
+			for i in annie_list_used:
+				get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Annie Items").add_item(i)
+			AnnieGimmickList(0)
 			get_parent().find_child("Battle Menu").find_child("Annie Options").visible = true
-
+		GimmicksList.HIKARI:
+			get_parent().find_child("Battle Menu").find_child("Hikari Aiming").visible = true
+		
+## Individual Gimmicks
+func AnnieGimmickList(num: int):
+	get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Items Remaining").text = str(annie_list[get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Annie Items").get_item_text(num)]-annie_list_used[get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Annie Items").get_item_text(num)])
+	get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Item Target").clear()
+	for u in placed_units_list:
+		if u.stats.player:
+			get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Item Target").add_item(u.stats.unit_name)
+	if num == 2:
+		get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("X List").visible = true
+		get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Y List").visible = true
+		get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("X List").clear()
+		get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Y List").clear()
+		for i in range(1,grid_x_limit+1):
+			get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("X List").add_item(str(i))
+		for i in range(0,grid_y_limit):
+			get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Y List").add_item(char(65+i))
+	else:
+		get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("X List").visible = false
+		get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Y List").visible = false
+			
+func AnnieGimmickUse():
+	var op: OptionButton = get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Annie Items")
+	var opI: OptionButton = get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Item Target")
+	var item_unit: UnitTile
+	for u in placed_units_list:
+		if u.stats.unit_name == opI.get_item_text(opI.selected):
+			item_unit = u
+	if annie_list_used[op.get_item_text(op.selected)] == annie_list[op.get_item_text(op.selected)]:
+		return
+	else:
+		match op.selected:
+			0:
+				ChangeCurrentHealthStat(5, item_unit)
+			1:
+				ChangeShieldStat(4, 1, item_unit)
+			2:
+				var x = get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("X List").selected
+				var y = get_parent().find_child("Battle Menu").find_child("Annie Options").find_child("Y List").selected
+				ChangeUnitPosition(x, y, item_unit)
+			3:
+				item_unit.has_special = true
+		annie_list_used[op.get_item_text(op.selected)] += 1
+		AnnieGimmickList(op.selected)
+		
 ## Gimmicks Enum
 enum GimmicksList {
 	NONE,
-	ANNIE
+	ANNIE,
+	AZU,
+	HIKARI,
+	ICHIKA,
+	IRIS,
+	ISAAC,
+	JOU,
+	KYOSHIKA,
+	MANJI,
+	MIU,
+	NAO,
+	NAOKI,
+	NOZOMI,
+	REKO,
+	SHIGERU,
+	UEKO
 }
